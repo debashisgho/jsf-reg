@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+<f:event listener="#{loginBacking.forwardToLogInIfNotLoggedIn}" type="preRenderView"></f:event>
+
+<h:head>
+  <title><ui:insert name="title">Registration App</ui:insert></title>
+  <link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+</h:head>
+
+<body>
+
+
+<div id="header">
+    <ui:insert name="header">
+    	<ui:include src="header.xhtml">
+    	</ui:include>
+    </ui:insert>
+</div>
+
+
+<div id="content">
+  <ui:insert name="content">
+    	Content area.  See comments below this line in the source.
+  </ui:insert>
+</div>
+
+<div id="footer">
+  <ui:insert name="footer">
+    	<ui:include src="footer.xhtml"/>
+  </ui:insert>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+	<h:body>
+	<br/><br/>
+		<fieldset>
+		  <legend>Log in Page</legend>
+		  <h:form>
+		  <table>
+		  <tr>
+		  <td width="420px"></td>
+		  <td>
+		  <div style="width:400px; background-color: gray;float: right;color: white; line-height: 50px">
+		  <table align="center">
+		  	<tr style="height: 40px">
+		  		<td style="font-size: large;">User ID</td>
+		  		<td><h:inputText label="User Id" id="userId" required="true" value="#{userBean.userid}"></h:inputText></td>
+		  	</tr>
+		  	
+		  	<tr>
+		  		<td style="font-size: large;">Password</td>
+		  		<td><h:inputSecret label="Password" id="password" required="true" value="#{userBean.pwd}"></h:inputSecret></td>
+		  	</tr>
+		  	
+		  	<tr></tr>
+			<tr>
+				<td></td>
+				<td style="float: right;">
+		  		<h:commandButton label="Login" value=" Login " action="#{userBean.checkUserCredentials}" styleClass="clickableButton"></h:commandButton>
+		  	</td>
+		  	<td></td>
+		  	</tr>
+		  	
+		  </table>
+		  </div>			  
+		  </td>
+		  <td style="width: 10px"></td>
+		  <td style="vertical-align:bottom;">
+		  <div style="color:black; size: 4px; font-family: cursive;">
+		  <h:link outcome="register" value="   New User Sign up"></h:link>
+		  </div>
+		  </td>
+		  </tr>
+		  
+		</table>
+		
+		<p><h:messages/></p>
+		  </h:form>
+		</fieldset>
+	
+	
+	</h:body>
+	</ui:define>
+	</ui:composition>
+</html>

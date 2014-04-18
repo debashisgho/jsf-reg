@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<h:body>
+	
+	<br/><br/>
+		<fieldset>
+		  <legend>Review Data Page</legend>
+		  <h:form id="form">
+		  <h4>Review Data Fields</h4>
+		  <table>
+	<tr>
+		<td>First Name :</td>
+		<td>
+			<h:outputText value= "#{userBean.fname}"/>
+        </td>
+	</tr>
+	
+	<tr>
+		<td>Last Name :</td>
+		<td>
+			<h:outputText value= "#{userBean.lname}"/>
+		</td>
+	</tr>
+	<tr>
+		<td>User Id :</td>
+		<td>
+			<h:outputText value= "#{userBean.userid}"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Sex :</td>
+		<td><h:outputText value= "#{userBean.sex}"/></td>
+			
+	
+	</tr>
+	<tr>
+		<td>Date Of Birth :</td>
+		<td><h:outputText value= "#{userBean.dob}"/></td>
+	</tr>
+	<tr>
+		<td>Email Address :</td>
+		<td><h:outputText value= "#{userBean.email}"/></td>
+	</tr>
+	<tr>
+		<td>Profession:</td>
+		<td><h:outputText value= "#{userBean.profession}"/></td>
+	</tr>
+</table>
+
+		  
+		<p><h:messages/></p>
+		
+		<h:commandButton value="Edit" action="register" styleClass="clickableButton"/>
+       <h:commandButton value="Confirm" action="#{userBean.addConfirmedUser}" styleClass="clickableButton"/>
+       <p><h:messages/></p>
+       
+		  </h:form>
+		</fieldset>
+	
+	
+	</h:body>
+	</ui:define>
+	</ui:composition>
+</html>

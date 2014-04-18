@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core">		
+
+		<ui:composition template="/WEB-INF/templates/template.xhtml">
+		
+		<ui:define name="content">
+		<h:body>
+		<br/><br/>
+		
+			<fieldset>
+				<legend>Registration Page</legend>
+				<h:form id="form">
+					
+					<h4>Registration Form</h4>
+					<table>
+						<tr>
+							<td>First Name *:</td>
+							<td>
+								<h:inputText label="First Name"
+									id="firstName" value="#{userBean.fname}" required="true" />
+								<h:message for="firstName" />
+							</td>
+						</tr>
+
+						<tr>
+							<td>Last Name *:</td>
+							<td>
+								<h:inputText label="Last Name"
+									id="lastName" value="#{userBean.lname}" required="true" />
+								<h:message for="lastName" />
+							</td>
+						</tr>
+						<tr>
+						<td>User Id *:</td>
+						<td>
+						<h:inputText label="userid" id="userid" value="#{userBean.userid}" required="true"						  
+						  immediate="true">	
+						  <f:ajax execute="form:userid" render="form:userIdAvailabilityMsg" event="change" listener="#{uiExtras.checkUserIdAvailability}"></f:ajax>
+						  					  
+						  </h:inputText>
+						 </td>
+						 
+						<td><h:outputLabel id="userIdAvailabilityMsg" value="#{uiExtras.userIdAvailabilityMsg}"/>											
+						<h:message for="userid"></h:message>
+					    </td>
+						</tr>
+						
+						<tr>
+						<td>Password *:</td>						
+						<td>
+						<h:inputSecret label="Password" id="password" value="#{userBean.pwd}" required="true"
+						 immediate="true">
+						 <f:ajax event="change" execute="password" render="pwdStandardVal pwdStandardBar" listener="#{uiExtras.checkPwdStandard}"></f:ajax>
+						 </h:inputSecret>
+						</td>
+						
+						<td align="left">
+						  <h:panelGroup id ="pwdStandardBar">
+						   <hr width=
+						   "#{uiExtras.pwdStandard == 'Strong' ?'150px': (uiExtras.pwdStandard =='Weak' ? '50px':(uiExtras.pwdStandard =='Medium' ? '100px':'0px'))}"
+						   style=" vertical-align: bottom; height:1mm; color: 
+						   #{uiExtras.pwdStandard == 'Strong' ?'Green': (uiExtras.pwdStandard =='Weak' ? 'Red':(uiExtras.pwdStandard =='Medium' ? 'Yellow':'Black'))}
+						    ;background-color:
+						    #{uiExtras.pwdStandard == 'Strong' ?'Green': (uiExtras.pwdStandard =='Weak' ? 'Red':(uiExtras.pwdStandard =='Medium' ? 'Yellow':'Black'))}
+						    ;"/>
+						     
+						   </h:panelGroup>  
+						 </td>
+						 <td>
+						  <div style="font-weight: bold;">
+						 <h:outputLabel id="pwdStandardVal" 
+						     value="#{uiExtras.pwdStandard}"/>
+						  </div> 
+						 </td>
+						 <td>
+						 <h:message for="password"></h:message>
+						</td>
+						</tr>
+						
+						<tr>
+							<td>Sex *:</td>
+							<td>
+								<h:selectOneRadio label="Sex" id="sex"
+									value="#{userBean.sex}" required="true">
+									<f:selectItem itemLabel="Male"
+										id="maleRadio" itemValue="M" />
+									<f:selectItem itemLabel="Female"
+										id="femaleRadio" itemValue="F" />
+								</h:selectOneRadio>
+								<h:message for="sex" />
+							</td>
+						</tr>
+						<tr>
+							<td>Date Of Birth *:</td>
+							<td>
+								<h:inputText id="dob"
+									label="Date Of Birth" value="#{userBean.dob}"
+									required="true">
+									<f:convertDateTime
+										pattern="dd-MM-yy"/>
+								</h:inputText>								
+								<h:message for="dob" />
+							</td>
+							<td>(dd-mm-yy)</td>
+						</tr>
+						<tr>
+							<td>Email Address *:</td>
+							<td>
+								<h:inputText label="Email Address"
+									id="email" value="#{userBean.email}" required="true"
+									validator="#{userBean.validateEmail}" />
+								<h:message for="email" />
+							</td>
+						</tr>
+						<tr>
+							<td>Profession *:</td>
+							<td>
+									  
+							 	<h:selectOneMenu label="Profession" value="#{userBean.profession}">
+							 		<f:selectItems value="#{userBean.professions}"></f:selectItems>
+							 	</h:selectOneMenu>
+							 
+							 
+							 </td>
+						</tr>
+					</table>
+					
+					<p>
+						<h:messages />
+					</p>
+					 
+					
+					<h:commandButton value="Register" action="confirm" styleClass="clickableButton" />
+					<h:commandButton value="Cancel" immediate="true" action="login" styleClass="clickableButton" />
+					
+				</h:form>
+
+			</fieldset>
+		</h:body>
+		</ui:define>
+		</ui:composition>
+	</html>
